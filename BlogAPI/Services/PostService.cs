@@ -29,7 +29,7 @@ namespace BlogAPI.Services
         {
             var post = repository.GetById(id);
             if (post is null)
-                throw new Exception("Post não encontrado!");
+                throw new KeyNotFoundException("Post não encontrado!");
 
             return new ResponsePostDto(post);
         }
@@ -38,7 +38,7 @@ namespace BlogAPI.Services
         {
             var postDb = repository.GetById(id);
             if (postDb is null)
-                throw new Exception("Post não encontrado!");
+                throw new KeyNotFoundException("Post não encontrado!");
 
             postDb.Update(post);
             repository.Update(postDb);
@@ -48,7 +48,7 @@ namespace BlogAPI.Services
         {
             var postDb = repository.GetById(id);
             if (postDb is null)
-                throw new Exception("Post não encontrado!");
+                throw new KeyNotFoundException("Post não encontrado!");
             repository.Delete(postDb);
         }
     }

@@ -1,4 +1,5 @@
 using BlogAPI.Repositories;
+using BlogAPI.Middlewares;
 using BlogAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,12 +16,14 @@ builder.Services.AddTransient<PostService>();
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionMiddleware>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
