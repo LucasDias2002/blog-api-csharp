@@ -33,8 +33,8 @@ namespace BlogAPI.Controllers
         [HttpPost]
         public IActionResult Add([FromBody] RequestPostDto post)
         {
-            service.Add(post);
-            return Created();
+            var newPost = service.Add(post);
+            return CreatedAtAction(nameof(GetById), new { id = newPost.id }, newPost);
         }
 
         [HttpPut("{id}")]

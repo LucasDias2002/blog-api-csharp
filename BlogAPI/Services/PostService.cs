@@ -14,9 +14,9 @@ namespace BlogAPI.Services
             this.repository = repository;
         }
 
-        public void Add(RequestPostDto post)
+        public ResponsePostDto Add(RequestPostDto post)
         {
-            repository.Add(new Post(post));
+            return new ResponsePostDto(repository.Add(new Post(post)));
         }
 
         public List<ResponsePostDto> GetAll()

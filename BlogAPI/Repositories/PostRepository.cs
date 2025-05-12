@@ -7,10 +7,11 @@ namespace BlogAPI.Repositories
     public class PostRepository
     {
         private readonly ConnectionContext context = new ConnectionContext();
-        public void Add(Post post)
+        public Post Add(Post post)
         {
             context.Posts.Add(post);
             context.SaveChanges();
+            return post;
         }
 
         public List<Post> GetAll()
